@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package employee;
+
+//was giving warning when just used "/"
+option go_package = "employee.com/employeeService/employee";
+
+service employee{
+  rpc getEmployeeDetails(employeeQuery) returns (employeeDetails) {}
+  rpc addEmployeeDetails(employeeDetails) returns (employeeResponse) {}
+}
+
+message employeeDetails{
+  string id = 1;
+  string name = 2;
+  string role = 3; // change this later
+}
+
+//for rpc call, was trying string but it expected message type so this was
+message employeeQuery{
+  string id = 1;
+}
+
+message employeeResponse{
+  string code = 1;
+}
